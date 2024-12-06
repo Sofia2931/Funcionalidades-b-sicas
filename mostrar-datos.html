@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Datos del Usuario</title>
+    <link rel="stylesheet" href="styles/estilo.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pagina_funcionalidades.html">Funcionalidades Lógicas</a></li>
+            <li><a href="`pagina_registro.html">Registro de Usuario</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Datos del Usuario Registrado</h1>
+        <table>
+            <tr><th>Campo</th><th>Valor</th></tr>
+            <tr><td>ID</td><td id="id"></td></tr>
+            <tr><td>Cédula</td><td id="cedula"></td></tr>
+            <tr><td>Nombre</td><td id="nombre"></td></tr>
+            <tr><td>Fecha de Nacimiento</td><td id="fechaNacimiento"></td></tr>
+            <tr><td>Ciudad</td><td id="ciudad"></td></tr>
+        </table>
+    </div>
+
+    <script>
+        const mostrarDatos = () => {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+            if (usuario) {
+                document.getElementById('id').textContent = usuario.id;
+                document.getElementById('cedula').textContent = usuario.cedula;
+                document.getElementById('nombre').textContent = usuario.nombre;
+                document.getElementById('fechaNacimiento').textContent = usuario.fechaNacimiento;
+                document.getElementById('ciudad').textContent = usuario.ciudad;
+            } else {
+                alert("No se encontró el usuario.");
+                window.location.href = 'registro.html';
+            }
+        };
+
+        window.onload = mostrarDatos;
+    </script>
+</body>
+</html>
+
